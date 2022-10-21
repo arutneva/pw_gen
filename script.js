@@ -20,33 +20,61 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var initialPass = ""
   var finalResult = ""
-  var size = prompt('Enter 8 to 128 characters')
-  console.log(size)
-  if (size >= 8 && size <= 128) {
-    var lowercase = confirm('Want to include lowercase?')
-    console.log(lowercase)
+  var charAmount = prompt('Select length between 8 to 128 characters')
+ 
+  if (charAmount >= 8 && charAmount <= 128) {
 
-    var uppercase = confirm('Want to include uppercase?')
-    console.log(uppercase)
+    var isLower = confirm('Want to include lowercase?')
 
-    var number = confirm('Want to include numbers?')
-    console.log(number)
 
-    var special = confirm('Want to include special characters?')
-    console.log(special)
+    var isUpper = confirm('Want to include uppercase?')
 
-    if (lowercase) {
 
-    } else {
+    var isNum = confirm('Want to include numbers?')
 
-    }
 
+    var isSpcl = confirm('Want to include special characters?')
+    
+for (let i = 0; i < charAmount; i++) {
+  if (isLower===true) {
+    var lowerPosition = Math.floor(Math.random()*26) 
+      initialPass += lowercase[lowerPosition]
+  } 
+
+  if (isUpper===true) {
+    var upperPosition = Math.floor(Math.random()*26) 
+      initialPass += uppercase[upperPosition]
+  } 
+
+  if (isNum===true) {
+    var numPosition = Math.floor(Math.random()*9) 
+      initialPass += number[numPosition]
+  } 
+
+  if (isSpcl===true) {
+    var spclPosition = Math.floor(Math.random()*10) 
+      initialPass += special[spclPosition]
+  }   
+}
+ 
+if (initialPass.length > charAmount) {
+  for (let i = 0; i < charAmount; i++) {
+    finalResult += initialPass[i]
+    
+  }
+} else {
+  finalResult = initialPass
+}
 
 
   } else {
     alert('Entry is not valid')
   }
+
+return finalResult
+
 }
 
 // Add event listener to generate button
